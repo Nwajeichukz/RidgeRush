@@ -1,6 +1,5 @@
 package com.RidgeRush.exception;
 
-
 import com.RidgeRush.dto.response.AppResponse;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpHeaders;
@@ -29,12 +28,10 @@ public class GlobalExceptionMapper extends ResponseEntityExceptionHandler {
                 HttpStatus.BAD_REQUEST);
     }
 
-
     @Override
     protected ResponseEntity<Object> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException ex, HttpHeaders headers, HttpStatus status, WebRequest request) {
         return new ResponseEntity<Object>("PLEASE CHANGE HTTP RETURN TYPE", HttpStatus.NOT_FOUND);
     }
-
 
     @ExceptionHandler(NoSuchElementException.class)
     public ResponseEntity<String> handleNoSuchElement (NoSuchElementException noSuchElementException){
@@ -48,6 +45,4 @@ public class GlobalExceptionMapper extends ResponseEntityExceptionHandler {
         AppResponse<String> response = new AppResponse<>(-1, responseDescription);
         return new ResponseEntity<>(response, headers, HttpStatus.BAD_REQUEST);
     }
-
-
 }
