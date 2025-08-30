@@ -21,7 +21,7 @@ public class RiderServiceImpl implements RiderService {
 
 
     @Override
-    public AppResponse<RiderDtoResponse> signupRiders(RidersSignUpDto ridersSignUpDto) {
+    public AppResponse<String> signupRiders(RidersSignUpDto ridersSignUpDto) {
         boolean check = ridersRepository.existsByEmail(ridersSignUpDto.getEmail());
 
         if (check) throw new ApiException("user already exists");
@@ -35,7 +35,7 @@ public class RiderServiceImpl implements RiderService {
         Rider savedRider = ridersRepository.save(rider);
 
 
-        return new AppResponse<>("successful", new RiderDtoResponse(savedRider)) ;
+        return new AppResponse<>("successful", savedRider.getId()) ;
     }
 
     @Override
@@ -62,9 +62,11 @@ public class RiderServiceImpl implements RiderService {
         if (updateDto.getFirstName() != null) {
             rider.setFirstName(updateDto.getFirstName());
         }
+
         if (updateDto.getLastName() != null) {
             rider.setLastName(updateDto.getLastName());
         }
+
         if (updateDto.getEmail() != null) {
             rider.setEmail(updateDto.getEmail());
         }

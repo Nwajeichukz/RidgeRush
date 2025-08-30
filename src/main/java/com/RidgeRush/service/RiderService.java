@@ -8,7 +8,7 @@ import com.RidgeRush.dto.response.RiderDtoResponse;
 import java.util.List;
 
 public interface RiderService {
-    AppResponse<RiderDtoResponse> signupRiders(RidersSignUpDto ridersSignUpDto);
+    AppResponse<String> signupRiders(RidersSignUpDto ridersSignUpDto);
 
     AppResponse<RiderDtoResponse> getRiderById(String id);
 

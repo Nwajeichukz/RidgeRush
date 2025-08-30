@@ -1,5 +1,6 @@
 package com.RidgeRush.dto.response;
 
+import com.RidgeRush.entity.RaceResult;
 import com.RidgeRush.entity.Rider;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -29,7 +30,7 @@ public class RiderDtoResponse {
         this.email = rider.getEmail();
         this.raceResultIds = rider.getRaceResults()
                 .stream()
-                .map(result -> result.getId())
+                .map(RaceResult::getId)
                 .collect(Collectors.toList());
     }
 }

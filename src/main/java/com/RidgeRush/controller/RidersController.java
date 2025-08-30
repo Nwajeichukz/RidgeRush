@@ -19,7 +19,7 @@ public class RidersController {
     private final RiderService riderService;
 
     @PostMapping("/signup")
-    ResponseEntity<AppResponse<RiderDtoResponse>> signupRiders (@RequestBody @Valid RidersSignUpDto ridersSignUpDto){
+    ResponseEntity<AppResponse<String>> signupRiders (@RequestBody @Valid RidersSignUpDto ridersSignUpDto){
         return ResponseEntity.ok(riderService.signupRiders(ridersSignUpDto));
     }
 
